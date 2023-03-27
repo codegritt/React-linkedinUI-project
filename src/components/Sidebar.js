@@ -19,7 +19,7 @@ function Sidebar({ avatar }) {
         />
         <Avatar className="sidebar__avatar" />
 
-        <h2>Gokul Chandan</h2>
+        <h2>Gokul VA</h2>
         <h4>gokulchandan24@gmail.com</h4>
         <h5>
           Angular | React | Node.js | MongoDB | ExpressJS | Full stack developer
