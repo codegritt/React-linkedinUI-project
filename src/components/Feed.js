@@ -7,7 +7,6 @@ import SubscriptionsSharpIcon from "@mui/icons-material/SubscriptionsSharp";
 import EventAvailableSharpIcon from "@mui/icons-material/EventAvailableSharp";
 import CalendarMonthSharpIcon from "@mui/icons-material/CalendarMonthSharp";
 import Post from "./Post";
-import { db } from "./Firebase";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
