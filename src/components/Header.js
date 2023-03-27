@@ -4,6 +4,9 @@ import "./Header.css";
 import HeaderOption from "./HeaderOption";
 import HomeIcon from "@mui/icons-material/Home";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import SmsIcon from "@mui/icons-material/Sms";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 function Header() {
   return (
@@ -23,6 +26,13 @@ function Header() {
       <div className="header__right">
         <HeaderOption Icon={HomeIcon} title="Home" />
         <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
+        <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
+        <HeaderOption Icon={SmsIcon} title="Messaging" />
+        <HeaderOption Icon={NotificationsIcon} title="Notifications" />
+        <HeaderOption
+          avatar="https://img.freepik.com/premium-vector/cute-boy-avatar-illustration_637684-31.jpg?w=2000"
+          title="me"
+        />
       </div>
     </div>
   );
