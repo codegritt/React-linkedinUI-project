@@ -7,23 +7,34 @@ import SubscriptionsSharpIcon from "@mui/icons-material/SubscriptionsSharp";
 import EventAvailableSharpIcon from "@mui/icons-material/EventAvailableSharp";
 import CalendarMonthSharpIcon from "@mui/icons-material/CalendarMonthSharp";
 import Post from "./Post";
+import { db } from "./firebase";
+import firebase from "./firebase";
 
 function Feed() {
+  const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
 
-  //   useEffect(() => {
-  //     db.collection("posts").onSnapshot((snapshot)=>
-  //         setPosts(
-  //             snapshot.doc.map((doc)=>{
-
-  //                 data:doc.data()
-  //             }))
-  //         )
-  //     );
-  //   }, []);
+  useEffect(() => {
+    db.collection("posts").onSnapshot((snapshot) =>
+      setPosts(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+  }, []);
 
   const sendPost = (e) => {
     e.preventDefault();
+
+    db.collection("posts").add({
+      name: "Gokul VA",
+      description: "This is a test",
+      message: input,
+      photoUrl: "",
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
   };
 
   return (
@@ -32,7 +43,12 @@ function Feed() {
         <div className="feed__input">
           <EditSharpIcon />
           <form>
-            <input type="text" placeholder="Start a post" />
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              type="text"
+              placeholder="Start a post"
+            />
             <button type="button" onClick={sendPost}>
               Send
             </button>
