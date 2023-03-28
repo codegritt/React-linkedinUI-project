@@ -26,3 +26,8 @@ color: gray;
 .post__body>h2{
     font-size: 15px;
 }
+
+.post__buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
