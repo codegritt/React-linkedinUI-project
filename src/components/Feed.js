@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Feed.css";
 import EditSharpIcon from "@mui/icons-material/EditSharp";
 import InputOption from "./InputOption";
@@ -7,35 +7,42 @@ import SubscriptionsSharpIcon from "@mui/icons-material/SubscriptionsSharp";
 import EventAvailableSharpIcon from "@mui/icons-material/EventAvailableSharp";
 import CalendarMonthSharpIcon from "@mui/icons-material/CalendarMonthSharp";
 import Post from "./Post";
-import { db } from "./firebase";
-import firebase from "./firebase";
-
 function Feed() {
-  const [input, setInput] = useState("");
-  const [posts, setPosts] = useState([]);
+  // const [input, setInput] = useState("");
+  // const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) =>
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    );
-  }, []);
+  // useEffect(() => {
+  //   db.collection("posts").onSnapshot((snapshot) =>
+  //     setPosts(
+  //       snapshot.docs.map((doc) => ({
+  //         id: doc.id,
+  //         data: doc.data(),
+  //       }))
+  //     )
+  //   );
+  // }, []);
 
-  const sendPost = (e) => {
-    e.preventDefault();
+  // const sendPost = (e) => {
+  //   e.preventDefault();
 
-    db.collection("posts").add({
-      name: "Gokul VA",
-      description: "This is a test",
-      message: input,
-      photoUrl: "",
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-  };
+  //   db.collection("posts").add({
+  //     name: "Gokul VA",
+  //     description: "This is a test",
+  //     message: input,
+  //     photoUrl: "",
+  //     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+  //   });
+  // };
+  //   <input
+  //   value={input}
+  //   onChange={(e) => setInput(e.target.value)}
+  //   type="text"
+  //   placeholder="Start a post"
+  // />
+
+  /* <button type="button" onClick={sendPost}>
+Send
+</button> */
 
   return (
     <div className="feed">
@@ -43,15 +50,8 @@ function Feed() {
         <div className="feed__input">
           <EditSharpIcon />
           <form>
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              type="text"
-              placeholder="Start a post"
-            />
-            <button type="button" onClick={sendPost}>
-              Send
-            </button>
+            <input type="text" placeholder="Start a post" />
+            <button type="button">Send</button>
           </form>
         </div>
         <div className="feed__inputOptions">
@@ -74,7 +74,7 @@ function Feed() {
         </div>
       </div>
 
-      {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+      {/* {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
         <Post
           key={id}
           name={name}
@@ -82,13 +82,28 @@ function Feed() {
           message={message}
           photoUrl={photoUrl}
         />
-      ))}
+      ))} */}
 
-      {/* <Post
+      <Post
         name="Gokul Chandan"
         description="This is a test"
         message="Gokul is creating a react website"
-      /> */}
+      />
+      <Post
+        name="Gokul Chandan"
+        description="This is a test"
+        message="Gokul is creating a angular website"
+      />
+      <Post
+        name="Gokul Chandan"
+        description="This is a test"
+        message="Gokul is creating a vue website"
+      />
+      <Post
+        name="Gokul Chandan"
+        description="This is a test"
+        message="Gokul is creating a website"
+      />
     </div>
   );
 }
